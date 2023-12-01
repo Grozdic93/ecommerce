@@ -1,0 +1,32 @@
+<div *ngIf="products.length > 0; else info">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">qtty</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+    
+            <tbody *ngFor="let product of products; let id = index">
+              <tr>
+                <th scope="row">{{ id }}</th>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.qtty }}</td>
+                <td> <button (click)="onDecreaseQtty(id)" class="btn btn-info">-</button><button (click)="onDeleteItem(id)" class="btn btn-warning">delete</button><button (click)="onIncreaseQtty(id)" class="btn btn-info">+</button></td>
+              </tr>
+    
+            </tbody>
+    
+      
+      </table>
+      <button (click)="onClearCart()" class="btn btn-danger">clear cart</button>
+      <hr>
+      <h3>Total: {{ total }}</h3>
+</div>
+  <ng-template #info> <h3>Cart is empty</h3>
+</ng-template>
+<button (click)="onSubmitData()" class="btn btn-success">Send</button>
